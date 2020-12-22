@@ -1,5 +1,5 @@
 //***************************************************************************************************
-//This program uses the "Game.class" and "Schedule.class" classes that do not exist
+//This program uses the "Game.class" and "Schedule.class" classes that were given by assigner
 // API given
 //***************************************************************************************************
 
