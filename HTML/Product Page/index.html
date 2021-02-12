@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+   <head>
+         <img data-image="canonlogo" src="images/canonlogo.jpg" alt="">
+
+          <div class="searchbar">
+            <a class="active" href="#home">Home</a>
+            <a href="#other-products">Other-Products</a>
+            <input type="text" placeholder="Search..">
+          </div>
+
+         <div class="view-cart">
+           <button onclick="viewcart()">View Cart</Button>
+           <p id="viewcart"></p>
+         </div>
+
+         <link href="style.css" rel="stylesheet">
+   </head>
+
+<body>   
+   <main class ="container">
+  
+      <div class="left-column"> 
+        <img data-image="4Llens" src="images/Black Canon Image.png" alt="">
+		
+        <div class="product-highlight">	
+  
+          <p> 
+           The first step in mirrorless cameras the EOS R pairs with a new lens mount for a multimedia 
+           camera that can take excellent shots and record the best video. This camera includes an OLED viewfinder
+           for clear bright viewing angles with a high resolution. It also includes an LCD touch screen with a swivel
+           design to suit working from high and low angles. The camera is built to with stand tough environments such as
+           mountain terrain with a magenisum build for a tight dust and mositure resistant seal.
+          </p>
+
+          <h1> The EOS R includes key features such as:</h1>
+          <ul>
+	<li>Canon RF Lens Mount</li>
+	<li>30.3 MP Full-Frame CMOS Sensor and DIGIC 8 Image Processor</li>
+	<li>Dual Pixel CMOS AF</li>
+	<li>UHD 4K Video Recording and Canon Log Gamma</li>
+	<li>Dual Pixel RAW</li>
+	<li>RF 24-105mm f/4-7.1 IS STM Lens</li>
+          </ul>
+        </div>
+          <div class="more-products">
+           <h1> More Products from other websites </h1>
+           <ul>
+             <li> <a href="https://www.amazon.ca/Canon-EOS-Rebel-EF-S-18-55/dp/B06VT2NQD8"> Canon EOS Rebel T7i EF-S 18-55mm IS STM </a> </li>
+             <li> <a href="https://www.adencamera.com/Canon-EOS-R6-Mirrorless-Digital-Camera-w-RF-24-105mm-STM-Lens-P3923.aspx"> Canon EOS R6 Mirrorless Digital Camera w/ RF 24-105mm STM Lens </a> <li>
+             <li> <a href="https://www.bestbuy.ca/en-ca/product/canon-eos-rebel-t7-dslr-camera-with-18-55mm-lens-kit/12383478"> Canon EOS Rebel T7 DSLR Camera with 18-55mm Lens Kit </a> </li>
+             <li> <a href="https://www.walmart.ca/en/ip/Canon-Cameras-9779B001-Powershot-SX350-Black-44-16mp/PRD3BQY4WAKMMKP"> Canon Cameras 9779B001 Powershot SX350 - Black, 16mp </a> </li>
+         </div>
+      </div>
+
+       <div class="right-column">
+
+         <div class="product-description">
+           <span style="color:red;font-weight:bold"> Camera </span>
+           <h1> Canon EOS R Mirrorless Digital Camera </h1>
+           <p> The latest camera from Canon allows you to take images close up and far in and allows you to record video up to 4K at 30FPS </p>
+         </div>
+        
+         <div class="product-configuration">
+            <span> Lens: </span> 
+			 
+           <div class="product-lens">
+             <div>  
+               <button onclick="changeImage1()">Body Only</button>
+               <p id="body-only"></p> 
+             </div>
+
+             <div>  
+               <button onclick="changeImage2()">f/4-7.1 Lens</button>
+               <p id="7.1lens"></p>
+             </div>
+
+             <div>  
+               <button onclick="changeImage3()">f/4L Lens</button>
+               <p id="4Llens"></p>
+              </div>
+			  
+             <script>
+                function changeImage1()
+                {
+                 document.getElementbyId("body-only").src="images/Body Only.jpg";
+                }
+	</script>
+			 
+              <script>
+	function changeImage2()
+                {
+                 document.getElementbyId("7.1lens").src="images/7.1lens.jpg";
+                }
+	</script>
+			 
+              <script>
+	function changeImage3()
+                {
+                 document.getElementbyId("4Llens").src="images/Black Canon Image.png";
+                }
+              </script>
+			
+             <div class="product-price">
+               <span> $2899.00 </span>
+               <button onclick="purchase()">Add to Cart</button>
+               <p id="add-to-cart"></p>
+             </div>
+			
+             <div class="product-box"> 
+	<h1> What is in the Box: </h1>
+	<ul>
+	    <li> Camera </li>
+	    <li> Lens (If purchased with a lens) </li>
+	    <li> Lens Cover </li>
+	    <li> Carrying Pouch </li>	
+	    <li> Camera Battery </li>
+	    <li> Camera Battery Charger </li>
+	    <li> USB Data Cable </li>
+	    <li> Camera Neck Strap </li>
+	</ul>
+	<img data-image="4Llens" src="images/packaging.jpg" alt="">
+              </div>
+			
+           </div>
+        
+         </div>
+         </div>
+</body>
+</html>
