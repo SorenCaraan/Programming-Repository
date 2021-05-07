@@ -1,0 +1,39 @@
+SQL> @ 3220Assn3P2.sql
+SQL> 
+SQL> INSERT INTO RestaurantN(RestID,Rname,Cuisine)
+  2  VALUES
+  3  	 ('r1', 'Helios', 'International');
+
+1 row created.
+
+SQL> INSERT INTO RestaurantN(RestID,Rname,Cuisine)
+  2  VALUES
+  3  	 ('r2', 'El_Gaucho', 'Argentine');
+
+1 row created.
+
+SQL> INSERT INTO RestaurantN(RestID,Rname,Cuisine)
+  2  VALUES
+  3  	 ('r3', 'La_Boheme', 'French');
+
+1 row created.
+
+SQL> INSERT INTO RestaurantN(RestID,Rname,Cuisine)
+  2  VALUES
+  3  	 ('r4', 'Tentazione', 'Italian');
+
+1 row created.
+
+SQL> INSERT INTO RestaurantN(RestID,Rname,Cuisine)
+  2  VALUES
+  3  	 ('r5', 'Capricho', 'International');
+
+1 row created.
+
+SQL> INSERT INTO RestaurantN(RestID,Rname,Cuisine)
+  2  VALUES
+  3  	 ('r6', 'Bluewater', 'French');
+
+1 row created.
+
+SQL> spool off
