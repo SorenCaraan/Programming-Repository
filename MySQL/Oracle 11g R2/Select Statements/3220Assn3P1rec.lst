@@ -1,0 +1,77 @@
+SQL> @ 3220Assn3P1.sql
+SQL> set echo on
+SQL> 
+SQL> drop table EmployeeN;
+
+Table dropped.
+
+SQL> drop table VisitN;
+
+Table dropped.
+
+SQL> drop table GuestN;
+
+Table dropped.
+
+SQL> drop table RestaurantN;
+
+Table dropped.
+
+SQL> 
+SQL> create table RestaurantN (RestID char(2) primary key, Rname varchar2(15), Cuisine
+  2  varchar2(15));
+
+Table created.
+
+SQL> 
+SQL> create table GuestN (GID char(3) primary key, Gname varchar2(20), City varchar(30));
+
+Table created.
+
+SQL> 
+SQL> create table VisitN (VID char(3) primary key, GID char(3), RestID char(2),Vdate date, Mtype
+  2  varchar2(10), foreign key (GID) references GuestN, foreign key (RestID) references
+  3  RestaurantN);
+
+Table created.
+
+SQL> 
+SQL> create table EmployeeN (eid char(3) primary key, ename char(10), salary number(7,2), RestID
+  2  char(2), mid char(3), foreign key (mid) references EmployeeN, foreign key (RestID) references
+  3  restaurantN);
+
+Table created.
+
+SQL> desc RestaurantN
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ RESTID                                    NOT NULL CHAR(2)
+ RNAME                                              VARCHAR2(15)
+ CUISINE                                            VARCHAR2(15)
+
+SQL> desc GuestN
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ GID                                       NOT NULL CHAR(3)
+ GNAME                                              VARCHAR2(20)
+ CITY                                               VARCHAR2(30)
+
+SQL> desc VisitN
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ VID                                       NOT NULL CHAR(3)
+ GID                                                CHAR(3)
+ RESTID                                             CHAR(2)
+ VDATE                                              DATE
+ MTYPE                                              VARCHAR2(10)
+
+SQL> desc EmployeeN
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                       NOT NULL CHAR(3)
+ ENAME                                              CHAR(10)
+ SALARY                                             NUMBER(7,2)
+ RESTID                                             CHAR(2)
+ MID                                                CHAR(3)
+
+SQL> spool off
