@@ -1,0 +1,215 @@
+SQL> desc Airline
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ANAME                                     NOT NULL VARCHAR2(15)
+ WEBSITE                                            VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc TourOperator
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TOID                                      NOT NULL CHAR(6)
+ ANAME                                              VARCHAR2(15)
+ CNAME                                              VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc Airline
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ANAME                                     NOT NULL VARCHAR2(15)
+ WEBSITE                                            VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc TourOperator
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TOID                                      NOT NULL CHAR(6)
+ ANAME                                              VARCHAR2(15)
+ CNAME                                              VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc Airline
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ANAME                                     NOT NULL VARCHAR2(15)
+ WEBSITE                                            VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc Airline
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ANAME                                     NOT NULL VARCHAR2(15)
+ WEBSITE                                            VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc TourOperator
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TOID                                      NOT NULL CHAR(6)
+ ANAME                                              VARCHAR2(15)
+ CNAME                                              VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> host
+
+SQL> desc TourOperator
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TOID                                      NOT NULL CHAR(6)
+ ANAME                                              VARCHAR2(15)
+ CNAME                                              VARCHAR2(15)
+ PHONE                                              CHAR(10)
+
+SQL> @ 3220A2.sql
+SQL> drop table TourOperator;
+
+Table dropped.
+
+SQL> drop table Airline;
+
+Table dropped.
+
+SQL> 
+SQL> CREATE TABLE Airline (Aname varchar2(15) PRIMARY KEY, Website varchar2(15), Phone char(10))
+  2  /
+
+Table created.
+
+SQL> CREATE TABLE TourOperator (TOID char(6) PRIMARY KEY, Aname varchar2(15), Cname
+  2  varchar2(15), Phone char(10),
+  3  			       FOREIGN KEY (Aname) REFERENCES Airline ON DELETE CASCADE);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Deals (Aname varchar2(15), TOID char(6), PRIMARY KEY
+  2  (Aname,TOID),
+  3  				 FOREIGN KEY(Aname) REFERENCES Airline, FOREIGN
+  4  KEY (TOID) REFERENCES TourOperator);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Representative (RID char(6) PRIMARY KEY, Rname varchar2(15),
+  2  Phone char(10));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Employs (TOID char(6), RID char(6), PRIMARY KEY (TOID,RID),
+  2  				 FOREIGN KEY (TOID) REFERENCES TourOperator,
+  3  FOREIGN KEY (RID) REFERENCES Representative);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE ReportsTo (RID char(6), PRIMARY KEY (RID), FOREIGN KEY (RID)
+  2  REFERENCES Representative);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE SubordinateRepresentative (SRID char(6), RID char(6), Rname
+  2  varchar2(15), Phone char(10), PRIMARY KEY (SRID, RID),
+  3  				 FOREIGN KEY (RID) REFERENCES Representative ON
+  4  DELETE SET NULL);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Guest (GID char(6) PRIMARY KEY, GName varchar2(15), Address
+  2  varchar2(15));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Principal (GID char(6), CreditCard number(16), PRIMARY KEY
+  2  (GID), FOREIGN KEY (GID) REFERENCES Guest);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Regular (GID char(6), Status varchar2(10), PRIMARY KEY (GID),
+  2  FOREIGN KEY (GID) REFERENCES Guest);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE IsAssigned (RID char(6), GID char(6), PRIMARY KEY (RID, GID),
+  2  FOREIGN KEY (RID) REFERENCES Representative,
+  3  				 FOREIGN KEY (GID) REFERENCES Guest);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Building (Bnum varchar2(6) PRIMARY KEY, Category char(9),
+  2  BView char(9));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Room (Bnum varchar2(6), Rnum char(3), Nbed integer check
+  2  (Nbed >=1 and Nbed <=3),  Category char(9) CHECK (Category='standard' or
+  3  Category='luxury' or Category='executive'),
+  4  				 PRIMARY KEY(Bnum, Rnum), FOREIGN KEY (Bnum)
+  5  REFERENCES Building ON DELETE CASCADE);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE IsAccomodated (GID char(6), Bnum varchar2(3), PRIMARY KEY
+  2  (GID, Bnum),
+  3  				 FOREIGN KEY (GID) REFERENCES Guest, FOREIGN
+  4  KEY (Bnum) REFERENCES Building);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Service (SID char(6) PRIMARY KEY, Title varchar2(10), Fee
+  2  number check (Fee >=0 and Fee <=200));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE IsBooked (Bnum varchar2(6), GID char(6), SID char(6), Sdate
+  2  char(6), PRIMARY KEY (Bnum, GID, SID),
+  3  				 FOREIGN KEY (Bnum) REFERENCES Building,
+  4  FOREIGN KEY (GID) REFERENCES Guest, FOREIGN KEY (SID) REFERENCES Service);
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Visit (VID char(6) PRIMARY KEY, Vdate char(6), Mtype
+  2  varchar2(10));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE Restaurant (RestID char(6) PRIMARY KEY, Rname varchar2(15),
+  2  Rtype varchar2(10), Theme varchar2(10));
+
+Table created.
+
+SQL> 
+SQL> CREATE TABLE IsServed (GID char(6), VID char(6), RestID char(6), PRIMARY
+  2  KEY (GID, VID, RestID), FOREIGN KEY (GID) REFERENCES Guest,
+  3  				 FOREIGN KEY (VID) REFERENCES Visit, FOREIGN
+  4  KEY (RestID) REFERENCES Restaurant);
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> spool off
