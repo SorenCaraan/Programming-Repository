@@ -1,0 +1,137 @@
+SQL> @ 3220Assn3P3.sql
+SQL> set echo on
+SQL> 
+SQL> select g.Gname
+  2  	 from GuestN g, VisitN v, RestaurantN r
+  3  	 where g.GID = v.GID AND v.RestID = r.RestID
+  4  	 AND r.Rname = 'Tentazione' AND v.Mtype = 'breakfast';
+
+GNAME                                                                           
+--------------------                                                            
+David                                                                           
+David                                                                           
+David                                                                           
+
+SQL> 
+SQL> select distinct g.Gname, g.GID, r.RestID, r.Cuisine
+  2  	 from GuestN g, VisitN v, RestaurantN r
+  3  	 where g.GID = v.GID AND v.RestID = r.RestID AND r.Cuisine != 'French';
+
+GNAME                GID RE CUISINE                                             
+-------------------- --- -- ---------------                                     
+Janice               g12 r1 International                                       
+David                g14 r1 International                                       
+Anna                 g16 r2 Argentine                                           
+David                g14 r5 International                                       
+Janice               g12 r5 International                                       
+Paola                g15 r5 International                                       
+Anna                 g16 r1 International                                       
+David                g17 r5 International                                       
+David                g14 r4 Italian                                             
+David                g17 r4 Italian                                             
+David                g17 r2 Argentine                                           
+
+GNAME                GID RE CUISINE                                             
+-------------------- --- -- ---------------                                     
+Hamid                g11 r1 International                                       
+Janice               g12 r4 Italian                                             
+Paola                g15 r1 International                                       
+Anna                 g16 r5 International                                       
+
+15 rows selected.
+
+SQL> 
+SQL> select e.Ename
+  2  	 from GuestN g, VisitN v, EmployeeN e
+  3  	 where g.GID = v.GID AND v.RestID = e.RestID AND g.City = 'Chicago';
+
+no rows selected
+
+SQL> 
+SQL> select r.Rname, COUNT (r.RestID) as Visits
+  2  	 from GuestN g, VisitN v, RestaurantN r
+  3  	 WHERE r.RestID = v.RestID AND v.GID = g.GID
+  4  	 GROUP BY r.Rname;
+
+RNAME               VISITS                                                      
+--------------- ----------                                                      
+Capricho                 5                                                      
+Helios                   6                                                      
+Tentazione               4                                                      
+El_Gaucho                3                                                      
+La_Boheme                6                                                      
+
+SQL> 
+SQL> select g.Gname, COUNT(g.GID) as Visits
+  2  	 from GuestN g, VisitN v, RestaurantN r
+  3  	 WHERE r.RestID = v.RestID AND v.GID = g.GID
+  4  	 GROUP BY g.Gname
+  5  	 HAVING COUNT(g.GID) =
+  6  	 (SELECT MAX(COUNT(g.GID)) FROM GuestN g, VisitN v, RestaurantN r
+  7  	  WHERE r.RestID = v.RestID AND v.GID = g.GID
+  8  	  GROUP BY g.Gname);
+
+GNAME                    VISITS                                                 
+-------------------- ----------                                                 
+David                         8                                                 
+
+SQL> 
+SQL> select e.Ename
+  2  	 from EmployeeN e, VisitN v, RestaurantN r, GuestN g
+  3  	 WHERE e.MID is NULL AND e.RestID = v.RestID AND v.RestID = r.RestID
+  4  AND v.GID = g.GID
+  5  	 AND g.City = 'Toronto';
+
+ENAME                                                                           
+----------                                                                      
+Wilson                                                                          
+Wilson                                                                          
+Loftus                                                                          
+Loftus                                                                          
+Loftus                                                                          
+Green                                                                           
+
+6 rows selected.
+
+SQL> 
+SQL> SELECT DISTINCT g.Gname
+  2  FROM GuestN g, VisitN v
+  3  WHERE NOT EXISTS (
+  4  	 SELECT 1 FROM RestaurantN r1
+  5  	 WHERE NOT EXISTS (
+  6  	     SELECT 1 FROM RestaurantN r2
+  7  	     WHERE r1.RestID = r2.RestID
+  8  	 )
+  9  )
+ 10  AND v.Vdate = '15-JUN-20';
+
+GNAME                                                                           
+--------------------                                                            
+Hamid                                                                           
+Janice                                                                          
+Paola                                                                           
+David                                                                           
+Anna                                                                            
+
+SQL> 
+SQL> select distinct g.Gname, r.Cuisine
+  2  	 from GuestN g, VisitN v, RestaurantN r
+  3  	 where g.GID = v.GID AND v.RestID = r.RestID AND r.Cuisine = 'French'
+  4  	 OR r.Cuisine = 'Italian';
+
+GNAME                CUISINE                                                    
+-------------------- ---------------                                            
+Hamid                Italian                                                    
+Anna                 French                                                     
+David                Italian                                                    
+Paola                Italian                                                    
+Janice               French                                                     
+Janice               Italian                                                    
+Hamid                French                                                     
+Anna                 Italian                                                    
+David                French                                                     
+Paola                French                                                     
+
+10 rows selected.
+
+SQL> spool off
