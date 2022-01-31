@@ -1,0 +1,201 @@
+  1  import java.awt.BorderLayout;
+  2  import java.awt.Font;
+  3  import java.awt.event.ActionEvent;
+  4  import java.awt.event.ActionListener;
+  5  import javax.swing.JFrame;
+  6  import javax.swing.JLabel;
+  7  import javax.swing.JMenu;
+  8  import javax.swing.JMenuBar;
+  9  import javax.swing.JMenuItem;
+ 10  
+ 11  /**
+ 12     This frame has a menu with commands to change the font 
+ 13     of a text sample.
+ 14  */
+ 15  public class FontFrame2 extends JFrame
+ 16  {
+ 17     private static final int FRAME_WIDTH = 300;
+ 18     private static final int FRAME_HEIGHT = 400;
+ 19     
+ 20     private JLabel label;
+ 21     private String facename;
+ 22     private int fontstyle;
+ 23     private int fontsize;
+ 24  
+ 25     /**
+ 26        Constructs the frame.
+ 27     */
+ 28     public FontFrame2()
+ 29     {  
+ 30        // Construct text sample     
+ 31        label = new JLabel("Big Java");
+ 32        add(label, BorderLayout.CENTER);
+ 33  
+ 34        // Construct menu      
+ 35        JMenuBar menuBar = new JMenuBar();     
+ 36        setJMenuBar(menuBar);
+ 37        menuBar.add(createFileMenu());
+ 38        menuBar.add(createFontMenu());
+ 39  
+ 40        facename = "Serif";
+ 41        fontsize = 24;
+ 42        fontstyle = Font.PLAIN;
+ 43  
+ 44        setLabelFont();
+ 45        setSize(FRAME_WIDTH, FRAME_HEIGHT);
+ 46     }
+ 47  
+ 48     class ExitItemListener implements ActionListener
+ 49     {
+ 50        public void actionPerformed(ActionEvent event)
+ 51        {
+ 52           System.exit(0);
+ 53        }
+ 54     }      
+ 55     
+ 56     /**
+ 57        Creates the File menu.
+ 58        @return the menu
+ 59     */
+ 60     public JMenu createFileMenu()
+ 61     {
+ 62        JMenu menu = new JMenu("File");
+ 63        JMenuItem exitItem = new JMenuItem("Exit");      
+ 64        ActionListener listener = new ExitItemListener();
+ 65        exitItem.addActionListener(listener);
+ 66        menu.add(exitItem);
+ 67        return menu;
+ 68     }
+ 69  
+ 70     /**
+ 71        Creates the Font submenu.
+ 72        @return the menu
+ 73     */
+ 74     public JMenu createFontMenu()
+ 75     {
+ 76        JMenu menu = new JMenu("Font");
+ 77        menu.add(createFaceMenu());
+ 78        menu.add(createSizeMenu());
+ 79        menu.add(createStyleMenu());
+ 80        return menu;
+ 81     }  
+ 82  
+ 83     /**
+ 84        Creates the Face submenu.
+ 85        @return the menu
+ 86     */
+ 87     public JMenu createFaceMenu()
+ 88     {
+ 89        JMenu menu = new JMenu("Face");
+ 90        menu.add(createFaceItem("Serif"));
+ 91        menu.add(createFaceItem("SansSerif"));
+ 92        menu.add(createFaceItem("Monospaced"));
+ 93        return menu;
+ 94     }  
+ 95  
+ 96     /**
+ 97        Creates the Size submenu.
+ 98        @return the menu
+ 99     */
+100     public JMenu createSizeMenu()
+101     {
+102        JMenu menu = new JMenu("Size");
+103        menu.add(createSizeItem("Smaller", -1));
+104        menu.add(createSizeItem("Larger", 1));
+105        return menu;
+106     }  
+107  
+108     /**
+109        Creates the Style submenu.
+110        @return the menu
+111     */
+112     public JMenu createStyleMenu()
+113     {
+114        JMenu menu = new JMenu("Style");
+115        menu.add(createStyleItem("Plain", Font.PLAIN));
+116        menu.add(createStyleItem("Bold", Font.BOLD));
+117        menu.add(createStyleItem("Italic", Font.ITALIC));
+118        menu.add(createStyleItem("Bold Italic", Font.BOLD 
+119              + Font.ITALIC));
+120        return menu;
+121     }  
+122  
+123     /**
+124        Creates a menu item to change the font face and set its action listener.
+125        @param name the name of the font face
+126        @return the menu item
+127     */
+128     public JMenuItem createFaceItem(final String name)
+129     {
+130        class FaceItemListener implements ActionListener
+131        {
+132           public void actionPerformed(ActionEvent event)
+133           {
+134              facename = name;
+135              setLabelFont();
+136           }
+137        }      
+138  
+139        JMenuItem item = new JMenuItem(name);      
+140        ActionListener listener = new FaceItemListener();
+141        item.addActionListener(listener);
+142        return item;
+143     }
+144  
+145     /**
+146        Creates a menu item to change the font size
+147        and set its action listener.
+148        @param name the name of the menu item
+149        @param increment the amount by which to change the size
+150        @return the menu item
+151     */
+152     public JMenuItem createSizeItem(String name, final int increment)
+153     {
+154        class SizeItemListener implements ActionListener
+155        {
+156           public void actionPerformed(ActionEvent event)
+157           {
+158              fontsize = fontsize + increment;
+159              setLabelFont();
+160           }
+161        }      
+162     
+163        JMenuItem item = new JMenuItem(name);      
+164        ActionListener listener = new SizeItemListener();
+165        item.addActionListener(listener);
+166        return item;
+167     }
+168  
+169     /**
+170        Creates a menu item to change the font style
+171        and set its action listener.
+172        @param name the name of the menu item
+173        @param style the new font style
+174        @return the menu item
+175     */
+176     public JMenuItem createStyleItem(String name, final int style)
+177     {
+178        class StyleItemListener implements ActionListener
+179        {
+180           public void actionPerformed(ActionEvent event)
+181           {
+182              fontstyle = style;
+183              setLabelFont();
+184           }
+185        }      
+186  
+187        JMenuItem item = new JMenuItem(name);      
+188        ActionListener listener = new StyleItemListener();
+189        item.addActionListener(listener);
+190        return item;
+191     }
+192  
+193     /**
+194        Sets the font of the text sample.
+195     */
+196     public void setLabelFont()
+197     { 
+198        Font f = new Font(facename, fontstyle, fontsize);
+199        label.setFont(f);
+200     }
+201  }
