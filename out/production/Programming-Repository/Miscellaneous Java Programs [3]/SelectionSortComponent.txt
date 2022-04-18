@@ -1,0 +1,50 @@
+SelectionSortComponent.java
+
+1  import java.awt.Graphics;
+  2  import javax.swing.JComponent;
+  3  
+  4  /**
+  5     A component that displays the current state of the selection sort algorithm.
+  6  */
+  7  public class SelectionSortComponent extends JComponent
+  8  {
+  9     private SelectionSorter sorter;
+ 10  
+ 11     /**
+ 12        Constructs the component.
+ 13     */
+ 14     public SelectionSortComponent()
+ 15     {
+ 16        int[] values = ArrayUtil.randomIntArray(30, 300);
+ 17        sorter = new SelectionSorter(values, this);
+ 18     }
+ 19  
+ 20     public void paintComponent(Graphics g)
+ 21     {
+ 22        sorter.draw(g);
+ 23     }
+ 24  
+ 25     /**
+ 26        Starts a new animation thread.
+ 27     */
+ 28     public void startAnimation()
+ 29     {
+ 30        class AnimationRunnable implements Runnable
+ 31        {
+ 32           public void run()
+ 33           {
+ 34              try
+ 35              {
+ 36                 sorter.sort();
+ 37              }
+ 38              catch (InterruptedException exception)
+ 39              {
+ 40              }
+ 41           }
+ 42        }
+ 43        
+ 44        Runnable r = new AnimationRunnable();
+ 45        Thread t = new Thread(r);
+ 46        t.start();
+ 47     }
+ 48  }
