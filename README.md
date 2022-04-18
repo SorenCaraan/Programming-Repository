@@ -1,2 +1,2 @@
 # Programming-Repository
-Programs built over years, all developed in Notepad++
+Programs built over years, most were developed in Notepad++
