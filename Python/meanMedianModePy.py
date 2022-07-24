@@ -12,4 +12,4 @@ print(x)
 print(y)
 print(z)
 
-# Use Python meanPy.py to run in terminal
+# Use Python meanMedianModePy.py to run in terminal
