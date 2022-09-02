@@ -4,8 +4,10 @@ from sklearn import linear_model
 '''
 Possible Errors with File Path, too long inside repository, please change when testing on Local Device
 Solved Issue: Use Relative Path in VS Code, Warnings for Syntax however
+Use "data.csv" for Intellij IDEA Community with Python Plugin
 '''
-df = pandas.read_csv("Python\Machine Learning Modules - W3H Schools\data.csv")
+df = pandas.read_csv("Python\Machine Learning Modules - W3H Schools\data.csv")   # VS Code Syntax
+# df = pandas.read_csv("data.csv")                                               # IntelliJ IDEA Syntax
 
 X = df[['Weight', 'Volume']]
 y = df['CO2']
@@ -13,7 +15,7 @@ y = df['CO2']
 reger = linear_model.LinearRegression()
 reger.fit(X, y)
 
-#predict the CO2 emission of a car where the weight is 2300kg, and the volume is 1300cm3:
+# predict the CO2 emission of a car where the weight is 2300kg, and the volume is 1300cm3:
 estimateCO2 = reger.predict([[2300, 1300]])
 
 print(estimateCO2)

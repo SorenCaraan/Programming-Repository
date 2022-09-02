@@ -1,7 +1,8 @@
 import pandas
 from sklearn import linear_model
 
-df = pandas.read_csv("Python\Machine Learning Modules - W3H Schools\data.csv")
+df = pandas.read_csv("Python\Machine Learning Modules - W3H Schools\data.csv")       #VS Code Syntax
+# df = pandas.read_csv("data.csv")                                                   #IntelliJ IDEA Syntax
 
 X = df[['Weight', 'Volume']]
 y = df['CO2']
