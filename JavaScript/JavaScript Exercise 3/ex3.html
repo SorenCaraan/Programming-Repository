@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<!--
+    A Plaindrome is a word, phrase, or sequence that reads the same backward as forward, examples: madam, civic
+    This program takes a word to check if it is a Plaindrome
+-->
+
+<html>
+<h1>Plaindrome?</h1>
+
+<p>Enter Text</p><input type="text" id="myText" value="">
+<button onclick="palindrome()">Enter</button>
+
+<p id="ans"></p>
+
+<script>
+function palindrome() {
+var n = document.getElementById("myText").value;
+
+    for (i = 0; i < n.length / 2; i++) {
+
+        if (n.charAt(i) !== n.charAt(n.length - 1 - i)) {
+            document.getElementById("ans").innerHTML =   'no';
+			exit()
+        }
+    }
+    document.getElementById("ans").innerHTML = (  'yes');
+}
+
+</script>
+</html> 

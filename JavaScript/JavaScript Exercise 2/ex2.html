@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<!-- 
+  This JavaScript exercise counts how many numbers that are inputted are positive and negative, the count stops
+  when 0 is entered
+  HTML Web Page File
+-->
+
+<html>
+<head>
+    <title> Number Check </title>
+    <h4> 
+     Enter numbers one by one by typing them in and pressing the submit button for each number, 
+     when 0 is entered an alert will tell you how many positive and negative numbers were entered.
+    </h4>
+
+    <link href="ex2.css" rel="stylesheet"/>
+    <script type="text/javascript" src="ex2.js"></script>
+
+</head>
+<body>
+    <div class="numberlabel">
+      <label> Enter number (Enter 0 to stop and restart) </label>
+    </div>
+    
+    <div class="numberinput">
+      <input type="text" id="num">
+    </div>
+    
+    <div class="numberbutton">
+      <button id="submit-btn" onclick="checkNum()">Submit</button>
+    </div>
+
+</body>
+</html>

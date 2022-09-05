@@ -1,0 +1,28 @@
+/* 
+  This JavaScript exercise counts how many numbers that are inputted are positive and negative, the count stops
+  when 0 is entered
+  CSS File for Borders and Text
+*/
+
+h4 {
+    border-style: solid;
+    padding: 15px;
+    margin: 20px;
+}
+
+.numberlabel label {
+    border-style: dashed;
+    padding: 15px;
+    margin: 20px;
+}
+
+.numberinput input {
+    border-style: solid;
+    padding: 5px;
+    margin: 20px;
+}
+
+.numberbutton button {
+    border-style: solid;
+    margin: 20px;
+}
