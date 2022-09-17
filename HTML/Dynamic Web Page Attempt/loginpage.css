@@ -1,0 +1,29 @@
+html {
+     color: white;
+     font-family: 'Times New Roman';
+     background-color: #000000;
+}
+
+h1 {
+     color: red;
+}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #FF0000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
