@@ -1,0 +1,23 @@
+Experiment #1: Centigrade Observations
+
+1. When the program is run and 32 degrees Fahrenheit is entered the program responds with
+a centigrade of 0 degrees.
+
+2. 212 Fahrenheit ----> 100.000008 Centigrade, 77 Fahrenheit ----> 25.0000019 Centigrade
+
+3. -460 Fahrenheit ----> -273.333344 Centigrade
+
+4. “York,” the program responds with abnormal program termination
+
+5. When “i” is removed from corresponding the program responds with “ The correspondng
+Centigrade temperature is”
+
+6. When “i” is remove from print the program says “unrecognized statement name at (1).”
+In question #1 the program runs without errors, this time it has errors.
+
+7. The program always gives a Centigrade of 0 when 5./9. Becomes 5/9.
+
+8. When “write(*,*)” replaced “print*”, no changes occured.
+
+9. When “write(*,12)” and “12 format(10x,F6.1,A)” are applied to the program when the
+temperature appeared, it was moved several spaces, when 10x and 6.1 where switched
