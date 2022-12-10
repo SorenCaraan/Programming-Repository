@@ -1,0 +1,179 @@
+Please Note: Syntax Errors Happened in Oracle (Linux Environment)
+
+These were the intended results ( 
+Obtained via SQL Fiddle: 
+http://sqlfiddle.com/#!4 
+)
+
+For Part III:
+
+**Query 1**:
+
+    select g.Gname
+        from GuestN g, VisitN v, RestaurantN r
+        where g.GID = v.GID AND v.RestID = r.RestID 
+        AND r.Rname = 'Tentazione' AND v.Mtype = 'breakfast'
+
+**[Results][2]**:
+
+    | GNAME |
+    |-------|
+    | David |
+    | David |
+    | David |
+**Query 2**:
+
+    
+    
+    select distinct g.Gname, g.GID, r.RestID, r.Cuisine
+        from GuestN g, VisitN v, RestaurantN r
+        where g.GID = v.GID AND v.RestID = r.RestID AND r.Cuisine != 'French'
+
+**[Results][3]**:
+
+    |  GNAME | GID | RESTID |       CUISINE |
+    |--------|-----|--------|---------------|
+    | Janice | g12 |     r1 | International |
+    |   Anna | g13 |     r1 | International |
+    |   Anna | g13 |     r2 |     Argentine |
+    |  David | g14 |     r1 | International |
+    |   Anna | g16 |     r2 |     Argentine |
+    |  David | g14 |     r5 | International |
+    | Janice | g12 |     r5 | International |
+    |  Paola | g15 |     r5 | International |
+    |   Anna | g16 |     r1 | International |
+    |  David | g17 |     r5 | International |
+    |  David | g14 |     r4 |       Italian |
+    |  David | g17 |     r4 |       Italian |
+    |  David | g17 |     r2 |     Argentine |
+    |  Hamid | g11 |     r1 | International |
+    | Janice | g12 |     r4 |       Italian |
+    |  Paola | g15 |     r1 | International |
+    |   Anna | g16 |     r5 | International |
+**Query 3**:
+
+    
+    
+    select e.Ename
+        from GuestN g, VisitN v, EmployeeN e
+        where g.GID = v.GID AND v.RestID = e.RestID AND g.City = 'Chicago'
+
+**[Results][4]**:
+
+    |      ENAME |
+    |------------|
+    | Fox        |
+    | Jones      |
+    | Smith      |
+    | Wang       |
+    | Loftus     |
+    | Smith      |
+    | Wilson     |
+    | Smith      |
+    | Wang       |
+    | Loftus     |
+**Query 4**:
+
+    
+    
+    select r.Rname, COUNT (r.RestID) as Visits
+        from GuestN g, VisitN v, RestaurantN r
+        WHERE r.RestID = v.RestID AND v.GID = g.GID
+        GROUP BY r.Rname
+
+**[Results][5]**:
+
+    |      RNAME | VISITS |
+    |------------|--------|
+    |   Capricho |      5 |
+    |     Helios |      7 |
+    | Tentazione |      4 |
+    |  El_Gaucho |      4 |
+    |  La_Boheme |      8 |
+**Query 5**:
+
+    
+    
+    select g.Gname, COUNT(g.GID) as Visits
+        from GuestN g, VisitN v, RestaurantN r
+        WHERE r.RestID = v.RestID AND v.GID = g.GID 
+        GROUP BY g.Gname
+        HAVING COUNT(g.GID) = 
+        (SELECT MAX(COUNT(g.GID)) FROM GuestN g, VisitN v, RestaurantN r
+         WHERE r.RestID = v.RestID AND v.GID = g.GID
+         GROUP BY g.Gname)
+
+**[Results][6]**:
+
+    | GNAME | VISITS |
+    |-------|--------|
+    |  Anna |      9 |
+**Query 6**:
+
+    
+    
+    select e.Ename
+        from EmployeeN e, VisitN v, RestaurantN r, GuestN g
+        WHERE e.MID is NULL AND e.RestID = v.RestID AND v.RestID = r.RestID AND v.GID = g.GID
+        AND g.City = 'Toronto'
+
+**[Results][7]**:
+
+    |      ENAME |
+    |------------|
+    | Wilson     |
+    | Wilson     |
+    | Wilson     |
+    | Loftus     |
+    | Loftus     |
+    | Loftus     |
+    | Loftus     |
+    | Green      |
+    | Green      |
+**Query 7**:
+
+    
+        
+    SELECT DISTINCT g.Gname
+    FROM GuestN g, VisitN v
+    WHERE NOT EXISTS (
+        SELECT 1 FROM RestaurantN r1
+        WHERE NOT EXISTS (
+            SELECT 1 FROM RestaurantN r2
+            WHERE r1.RestID = r2.RestID
+        )
+    )
+    AND v.Vdate = '15-JUN-20'
+
+**[Results][8]**:
+
+    |  GNAME |
+    |--------|
+    |  Hamid |
+    | Janice |
+    |  Paola |
+    |   Anna |
+    |  David |
+**Query 8**:
+
+    
+    
+    select distinct g.Gname, r.Cuisine
+        from GuestN g, VisitN v, RestaurantN r
+        where g.GID = v.GID AND v.RestID = r.RestID AND r.Cuisine = 'French'
+        OR r.Cuisine = 'Italian'
+
+**[Results][9]**:
+
+    |  GNAME | CUISINE |
+    |--------|---------|
+    |  Hamid | Italian |
+    |   Anna |  French |
+    |  David | Italian |
+    |  Paola | Italian |
+    | Janice |  French |
+    | Janice | Italian |
+    |  Hamid |  French |
+    |   Anna | Italian |
+    |  David |  French |
+    |  Paola |  French |
