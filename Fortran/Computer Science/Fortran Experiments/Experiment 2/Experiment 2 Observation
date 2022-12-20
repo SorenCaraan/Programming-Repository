@@ -1,0 +1,7 @@
+3)The argument of the square root function looks strange: Why did we have to multiply i by 1
+Experiment, then explain.
+
+ We have to multiply by 1 in the argument, because if we did not then the system gives the error
+message: “Reference to intrinsic `SQRT' at (^) invalid -- one or more arguments have incorrect
+type,” the computer gives the this error, because the computer does not know the command is to
+square root, unless you put the operation i*1

@@ -1,4 +1,4 @@
-      ! Disclaimer - I do "not" own this porgram 
+      ! Disclaimer - I do "not" own this program 
       ! All Rights Reserved to Professor John Hofbauer
       ! Please see "Experiment Result.txt"
 

@@ -9,7 +9,7 @@ a centigrade of 0 degrees.
 
 4. “York,” the program responds with abnormal program termination
 
-5. When “i” is removed from corresponding the program responds with “ The correspondng
+5. When “i” is removed from corresponding the program responds with “ The corresponding
 Centigrade temperature is”
 
 6. When “i” is remove from print the program says “unrecognized statement name at (1).”
@@ -17,7 +17,7 @@ In question #1 the program runs without errors, this time it has errors.
 
 7. The program always gives a Centigrade of 0 when 5./9. Becomes 5/9.
 
-8. When “write(*,*)” replaced “print*”, no changes occured.
+8. When “write(*,*)” replaced “print*”, no changes occurred.
 
 9. When “write(*,12)” and “12 format(10x,F6.1,A)” are applied to the program when the
 temperature appeared, it was moved several spaces, when 10x and 6.1 where switched
