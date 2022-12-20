@@ -1,0 +1,10 @@
+Perquisites:
+
+1. Install Visual Studio Code
+2. Install Visual Studio Code C# Extension 
+3. Install .NET Framework SDK [Time of Writing .NET Framework SDK is 7.0]
+
+To Start a C# Project:
+1. Create a Folder [Project Name is Folder Name]
+2. Go to Visual Studio Code Terminal and type this in [NOT including "]: "dotnet new console"
+3. All Folders and Files should generate, in "program.cs", Start coding in C#
