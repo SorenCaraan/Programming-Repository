@@ -10,7 +10,7 @@ public class SortStrings
      
 	   System.out.println("Enter three Strings (Words) :");
 	   for(int i = 0; i < input.length; i++)
-	   input[i] = scan.nextLine();
+	   	input[i] = scan.nextLine();
  
        for(int f = 1; f < input.length; f++){
 		 for(int g = 0; g <input.length-1; g++){
@@ -25,7 +25,7 @@ public class SortStrings
 		System.out.println();
 		System.out.println("Here are the strings in ascedning alphapetic order: ");
         for(String o: input)
-        System.out.println(o);			
+        	System.out.println(o);			
 		
 		
 		for(int n = 1; n < input.length; n++){
@@ -41,6 +41,6 @@ public class SortStrings
 		System.out.println();
 		System.out.println("Here are the strings in descending alphapetic order: ");
         for(String o: input)
-        System.out.println(o);			
+        	System.out.println(o);			
 	}
 }
