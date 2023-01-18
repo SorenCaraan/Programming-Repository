@@ -23,7 +23,7 @@ public class SortStrings
 	    }
 		
 		System.out.println();
-		System.out.println("Here are the strings in ascedning alphapetic order: ");
+		System.out.println("Here are the strings in ascending alphabetic order: ");
         for(String o: input)
         	System.out.println(o);			
 		
@@ -39,7 +39,7 @@ public class SortStrings
 	    }
 		
 		System.out.println();
-		System.out.println("Here are the strings in descending alphapetic order: ");
+		System.out.println("Here are the strings in descending alphabetic order: ");
         for(String o: input)
         	System.out.println(o);			
 	}
