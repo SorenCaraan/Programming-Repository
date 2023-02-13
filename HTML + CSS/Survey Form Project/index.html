@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> Survey Form </title>
+    <link rel="stylesheet" href="styles.css"/>
+    </head>
+  <body>
+    
+    <h1 id="title">Survey Form</h1>
+    <p id="description"> Please take time to answer our survey form </p>
+    <form id="survey-form">
+      <fieldset>
+        <label id="name-label" > Name <input id="name" type="text" required placeholder="Enter name: Sean"/></label>
+        <label id="email-label" > Email <input id="email" type="email" required placeholder="Enter email: something@gmail.com"/></label>
+        <label id="number-label" > Enter your age (optional): <input type="number" id="number" min="1" max="100" placeholder="52"/></label>
+      </fieldset>
+      
+      <fieldset>
+        <label for="dropdown"> What is your occupation?
+          <select id="dropdown">
+            <option value="">(select option)</option>
+            <option value="1">Student</option>
+            <option value="2">Employed</option>
+            <option value="2">Other</option>
+          </select>
+        </label>
+      </fieldset>
+      
+      <fieldset>
+        <label>How would you say your mood is?</label> 
+          <label for="first-mood" ><input id="first-mood" type="radio" name="mood-select" class="inline" value="good" />Good</label> 
+          <label for="second-mood" > <input id="first-mood" type="radio" name="mood-select" class="inline" value="bad" />Bad</label> 
+      </fieldset>
+
+      <fieldset>
+        <label> What are things you do on your spare time? </label>
+          <label for="hobby"><input id="hobby" type="checkbox" value="read" class="inline"/> Read </label>
+          <label for="hobby"><input id="hobby" type="checkbox" value="write" class="inline"/> Write </label>
+          <label for="hobby"><input id="hobby" type="checkbox" value="video-games" class="inline"/> Video Games </label>
+          <label for="hobby"><input id="hobby" type="checkbox" value="exercise" class="inline"/> Exercise </label>
+          <label for="hobby"><input id="hobby" type="checkbox" value="other" class="inline" /> Other </label>
+      </fieldset>
+
+      <fieldset>
+        <label for="comments">Any additional comments:
+          <textarea id="comments" name="comments" placeholder="This survey was very short"></textarea>
+        </label>      
+      </fieldset>
+      
+      <fieldset>
+        <input id="submit" type="submit" value="Submit"/>
+      </fieldset>
+    </form>
+    </body>
+</html>
